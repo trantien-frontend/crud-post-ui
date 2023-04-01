@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>post-ui</title>
+
+    <link rel="stylesheet" href="/style/grid.css" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/home-page.css" />
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font-awesome -->
+
+    <!-- gooogle-font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- gooogle-font -->
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="dflex align-ct justify-bt">
+          <h1>
+            <a href="index.html">
+              <img src="./images/logo.svg" alt="" />
+            </a>
+          </h1>
+
+          <ul class="nav">
+            <li>
+              <span><i class="fa-solid fa-circle-plus"></i></span>
+              <a class="nav__link" href="#">Add new post</a>
+            </li>
+            <li>
+              <span><i class="fa-solid fa-circle-plus"></i></span>
+              <a class="nav__link" href="#">edit post</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- Header -->
+    <main>
+      <!-- template -->
+      <template id="postItemTemplate">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card__img">
+              <img data-id="thumbnail" src="/images/lastest-post.jpg" alt="" />
+            </div>
+
+            <div class="card__dsc">
+              <h4 data-id="title">Learn JavaScript I can do It</h4>
+              <p data-id="description" class="card__dsc-dsc">
+                SomeThing Else SomeThing Else SomeThing Else SomeThing Else
+              </p>
+              <span>
+                <small data-id="author">by Tran Tien</small>
+                <small data-id="timeSpan"> - 14:23 11/03/2023</small>
+              </span>
+            </div>
+
+            <div data-id="menu" class="card__icon">
+              <div data-id="edit">
+                <i class="fas fa-pen"></i>
+              </div>
+              <div data-id="remove">
+                <i class="fas fa-trash"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <!-- template -->
+      <!-- Serach - title - Post -->
+      <div class="input-search-title">
+        <div class="container">
+          <div class="form-group">
+            <span>Search</span>
+            <input
+              type="text"
+              id="search-post"
+              placeholder="Input title post ..."
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Serach - title - Post -->
+      <!-- lastest-post -->
+      <div class="lastest-post">
+        <div class="container">
+          <h3 class="lastest-post-title">lastest post</h3>
+          <div id="lastest-post-list" class="row">
+            <!-- <div class="col-12 col-md-6 col-lg-4">
+							<div class="card">
+								<img
+									data-id="thumbnail"
+									src="/images/lastest-post.jpg"
+									class="card-img"
+									alt=""
+								/>
+
+								<div class="card__dsc">
+									<h4 data-id="card__dsc-title">
+										Learn JavaScript I can do It
+									</h4>
+									<p data-id="description" class="card__dsc-dsc">
+										SomeThing Else SomeThing Else SomeThing Else SomeThing Else
+									</p>
+									<span>
+										<small data-id="author">by Tran Tien</small>
+										<small data-id="timeSpan"> - 14:23 11/03/2023</small>
+									</span>
+								</div>
+
+								<div data-id="menu" class="card__icon">
+									<div data-id="edit">
+										<i class="fas fa-pen"></i>
+									</div>
+									<div data-id="remove">
+										<i class="fas fa-trash"></i>
+									</div>
+								</div>
+							</div>
+						</div> -->
+          </div>
+        </div>
+      </div>
+      <!-- lastest-post -->
+      <ul id="post-pagination" class="list-post-pagination">
+        <li class="list-post-pagination__item">
+          <a href="#">
+            <i class="fa-solid fa-chevron-left"></i>
+          </a>
+        </li>
+        <!-- <li class="list-post-pagination__item"><a href="#">1</a></li>
+				<li class="list-post-pagination__item"><a href="#">2</a></li> -->
+
+        <li class="list-post-pagination__item">
+          <a href="#">
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </li>
+      </ul>
+    </main>
+    <footer></footer>
+    <script type="module" src="/js/home.js"></script>
+  </body>
+</html>
