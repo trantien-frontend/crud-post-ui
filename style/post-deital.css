@@ -1,57 +1,11 @@
+@import url(/style/section/hero.css);
+
 header .nav li:last-child {
 	display: block !important;
 }
 
 header {
 	box-shadow: none;
-}
-
-.hero-background {
-	height: 30rem;
-	background-color: gray;
-
-	background-position: center center;
-	background-size: cover;
-
-	position: relative;
-	z-index: -1;
-}
-
-.hero-background img {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-
-	object-fit: cover;
-}
-
-.post-detail {
-	margin-top: -5rem;
-}
-
-.post-detail > div > div {
-	padding: 3rem;
-	background: white;
-	border-radius: 10px;
-}
-
-.post-detail .title {
-}
-
-.post-detail .title h3 {
-	font-size: 3rem;
-}
-
-.post-detail .title span {
-	color: var(--color-third);
-}
-.post-detail {
-}
-
-.post-detail .title {
-	padding-bottom: 2rem;
-	margin-bottom: 2rem;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .post-detail .description p {
@@ -63,9 +17,6 @@ header {
 	position: relative;
 	margin-bottom: 2rem;
 	cursor: pointer;
-}
-
-.post-detail .description .post-detail-img img {
 }
 
 @media only screen and (min-width: 992px) {

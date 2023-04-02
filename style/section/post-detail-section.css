@@ -1,0 +1,23 @@
+.post-detail {
+	margin-top: -5rem;
+}
+
+.post-detail > div > div {
+	padding: 3rem;
+	background: white;
+	border-radius: 10px;
+}
+
+.post-detail .title {
+	padding-bottom: 2rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post-detail .title h3 {
+	font-size: 3rem;
+}
+
+.post-detail .title span {
+	color: var(--color-third);
+}
