@@ -1,8 +1,7 @@
 import { postApi } from './api/postApi';
 import { initPagination, renderPagination } from './utils/pagination';
 
-import { renderPostList } from './utils/post';
-import { initSearchPost } from './utils/searchPost';
+import { renderPostList, initSearchPost } from './utils';
 
 async function handleFilterChange(filterName, filterValue) {
 	try {
