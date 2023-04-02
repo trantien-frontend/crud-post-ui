@@ -74,6 +74,19 @@ header .nav li:hover span i {
 	transform: rotate(90deg);
 }
 
+.overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 99;
+	background-color: black;
+	opacity: 0.5;
+	display: none;
+}
+
+.overlay.show-overlay {
+	display: block;
+}
+
 :root {
 	--color-primary: #dc1b1b;
 	--color-secondary: #212529;

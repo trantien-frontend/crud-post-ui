@@ -3,12 +3,17 @@ export function setTextContent(parentElement, selector, text) {
 	element.textContent = text;
 }
 
-export function setImageSource(parentElement, selector, imageUrl) {
+export function setBackground(parentElement, selector, imageUrl) {
 	const element = parentElement.querySelector(selector);
-	element.src = imageUrl;
+	element.style.backgroundImage = `url('${imageUrl}')`;
 }
 
 export function trunCase(text) {
 	if (typeof text !== 'string' || text.length < 100) return;
 	return `${text.slice(0, 100)}…`;
+}
+
+export function getOverlayBackground() {
+	const overlayBackground = document.querySelector('.overlay');
+	return overlayBackground;
 }

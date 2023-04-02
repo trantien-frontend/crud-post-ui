@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Post-Detail</title>
+
+		<link rel="stylesheet" href="/style/grid.css" />
+		<link rel="stylesheet" href="/style/main.css" />
+		<link rel="stylesheet" href="/style/post-deital.css" />
+
+		<!-- font-awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+			integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- font-awesome -->
+
+		<!-- gooogle-font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- gooogle-font -->
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<div class="container">
+				<div class="dflex align-ct justify-bt">
+					<h1>
+						<a href="index.html">
+							<img src="./images/logo.svg" alt="" />
+						</a>
+					</h1>
+
+					<ul class="nav">
+						<li>
+							<span><i class="fa-solid fa-circle-plus"></i></span>
+							<a class="nav__link" href="#">Add new post</a>
+						</li>
+						<li>
+							<a id="redirectEditPage" class="nav__link" href=""></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!-- Header -->
+		<section class="hero-background">
+			<img src="" alt="" id="postHeroImage" />
+		</section>
+
+		<section id="postDetail" class="post-detail">
+			<div class="container">
+				<div>
+					<div class="title">
+						<h3 id="post-detail-title">Title</h3>
+						<span>
+							<small>by</small>
+							<small id="post-detail-author">author</small>
+							<small id="post-detail-timeSpan">timeSpan</small>
+						</span>
+					</div>
+					<div class="description">
+						<p id="post-detail-dsc">description</p>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Non totam
+							pariatur quibusdam tenetur nemo tempora incidunt ex doloremque
+							exercitationem dicta. Corporis fuga totam nulla voluptatibus
+							possimus similique aliquid nobis illo.
+						</p>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Non totam
+							pariatur quibusdam tenetur nemo tempora incidunt ex doloremque
+							exercitationem dicta. Corporis fuga totam nulla voluptatibus
+							possimus similique aliquid nobis illo.
+						</p>
+
+						<div class="post-detail-img">
+							<img
+								data-album="lightBox"
+								src="https://picsum.photos/1368/800"
+								alt=""
+							/>
+						</div>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Non totam
+							pariatur quibusdam tenetur nemo tempora incidunt ex doloremque
+							exercitationem dicta. Corporis fuga totam nulla voluptatibus
+							possimus similique aliquid nobis illo. exercitationem dicta.
+							Corporis fuga totam nulla voluptatibus possimus similique aliquid
+							nobis illo.
+						</p>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Non totam
+							pariatur quibusdam tenetur nemo tempora incidunt ex doloremque
+							exercitationem dicta. Corporis fuga totam nulla voluptatibus
+							possimus similique aliquid nobis illo.
+						</p>
+
+						<div class="post-detail-img">
+							<img
+								data-album="lightBox"
+								src="https://picsum.photos/1368/1000"
+								alt=""
+							/>
+						</div>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Non totam
+							pariatur quibusdam tenetur nemo tempora incidunt ex doloremque
+							exercitationem dicta. Corporis fuga totam nulla voluptatibus
+							possimus similique aliquid nobis illo.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="lightBox" class="modal-box">
+			<div class="modal-box-img">
+				<img data-id="lightBoxImage" src="./images/lastest-post.jpg" alt="" />
+			</div>
+
+			<div class="modal-box-button">
+				<button data-id="lightBox-Prev">Prev</button>
+				<button data-id="lightBox-Next">Next</button>
+			</div>
+		</section>
+
+		<div class="overlay"></div>
+
+		<script type="module" src="/js/post-detail.js"></script>
+	</body>
+</html>
