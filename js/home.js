@@ -2,6 +2,8 @@ import { postApi } from './api/postApi';
 import { initPagination, renderPagination } from './utils/pagination';
 
 import { renderPostList, initSearchPost } from './utils';
+import toastify from './utils/toastify';
+import splideSlide from './utils/splideSlide';
 
 async function handleFilterChange(filterName, filterValue) {
 	try {
@@ -24,31 +26,42 @@ async function handleFilterChange(filterName, filterValue) {
 			onChange: (value) => handleFilterChange('_page', value),
 		});
 	} catch (error) {
-		console.log('message', error);
+		toastify.error(`${error}`);
 	}
 }
 
 async function initRemovePost() {
 	try {
 		document.addEventListener('post-remove', async (e) => {
-			const post = e.detail;
-			window.confirm('Are you sure deleted');
+			const detail = e.detail;
+			const post = detail.post;
 
 			await postApi.remove(post.id);
 			await handleFilterChange();
+
+			detail.modal.classList.remove('show');
+			detail.overlay.classList.remove('show-overlay');
+
+			toastify.success('Delete post success');
 		});
 	} catch (error) {
-		console.log(error);
+		toastify.error(`${error}`);
 	}
 }
 
+function initSlider() {
+	splideSlide.default('splide');
+}
+
 (async () => {
+	initSlider();
+
 	const url = new URL(window.location);
 
 	const searchParams = url.searchParams;
 
 	if (!searchParams.get('_page')) searchParams.set('_page', 1);
-	if (!searchParams.get('_limit')) searchParams.set('_limit', 9);
+	if (!searchParams.get('_limit')) searchParams.set('_limit', 6);
 
 	const params = {
 		_page: searchParams.get('_page'),
@@ -64,6 +77,7 @@ async function initRemovePost() {
 
 	initPagination({
 		idElement: 'post-pagination',
+		defaultParams: searchParams,
 		onChange: (value) => handleFilterChange('_page', value),
 	});
 

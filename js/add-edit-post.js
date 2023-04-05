@@ -38,6 +38,9 @@ async function handelSubmitForm(formValues) {
 			: await postApi.addFormData(formData);
 
 		toastify.success('Save post Successfully!');
+		setTimeout(() => {
+			window.location.assign(`detail-post.html?id=${currentData.id}`);
+		}, 2000);
 	} catch (erorr) {
 		toastify.error(`Error: ${erorr.message}`);
 	}

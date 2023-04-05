@@ -45,45 +45,87 @@ export function renderPagination(idElement, pagination) {
 		listButton.forEach((button) => button.remove());
 	}
 
-	for (let index = totalPage; index >= 1; index--) {
+	if (_page === 1) {
+		const end = _page + 2;
+
+		for (let index = end; index >= _page; index--) {
+			const buttonPagination = createPaginationButton(index, _page);
+			postPagination.insertBefore(buttonPagination, postPagination.children[1]);
+		}
+
+		return;
+	}
+
+	if (_page === totalPage) {
+		const start = totalPage - 2;
+
+		for (let index = totalPage; index >= start; index--) {
+			const buttonPagination = createPaginationButton(index, _page);
+			postPagination.insertBefore(buttonPagination, postPagination.children[1]);
+		}
+
+		return;
+	}
+
+	const start = _page - 1;
+	const end = _page + 1;
+
+	for (let index = end; index >= start; index--) {
 		const buttonPagination = createPaginationButton(index, _page);
 		postPagination.insertBefore(buttonPagination, postPagination.children[1]);
 	}
 }
 
-export function initPagination({ idElement, onChange }) {
+let isPagination = false;
+
+export function initPagination({ idElement, defautParams, onChange }) {
 	const postPagination = document.getElementById(idElement);
 
 	if (!postPagination) return;
 
 	const prevButton = postPagination.firstElementChild;
 
-	prevButton.addEventListener('click', (e) => {
+	prevButton.addEventListener('click', async (e) => {
 		e.preventDefault();
+
+		prevButton.classList.add('disabled');
+
+		if (isPagination) return;
+		isPagination = true;
 
 		const _page = Number.parseFloat(postPagination.dataset.page);
 
-		if (_page <= 1) return;
+		if (_page > 1) await onChange(_page - 1);
 
-		onChange(_page - 1);
+		isPagination = false;
 	});
 
 	const nextButton = postPagination.lastElementChild;
-	nextButton.addEventListener('click', (e) => {
+	nextButton.addEventListener('click', async (e) => {
 		e.preventDefault();
+
+		nextButton.classList.add('disabled');
+
+		if (isPagination) return;
+		isPagination = true;
 
 		const _page = Number.parseFloat(postPagination.dataset.page);
 		const _totalPage = Number.parseFloat(postPagination.dataset.totalPage);
 
-		if (_page >= _totalPage) return;
+		if (_page < _totalPage) await onChange(_page + 1);
 
-		onChange(_page + 1);
+		isPagination = false;
 	});
 
 	const paginationPageButton = postPagination.querySelectorAll('[data-page]');
 	paginationPageButton.forEach((button) => {
-		button.addEventListener('click', function (e) {
+		button.addEventListener('click', async function (e) {
 			e.preventDefault();
+
+			this.classList.add('disabled');
+
+			if (isPagination) return;
+			isPagination = true;
 
 			const _page = Number.parseFloat(postPagination.dataset.page);
 
@@ -91,7 +133,8 @@ export function initPagination({ idElement, onChange }) {
 
 			if (_page === currentPage) return;
 
-			onChange(currentPage);
+			await onChange(currentPage);
+			isPagination = false;
 		});
 	});
 }

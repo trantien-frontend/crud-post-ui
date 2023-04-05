@@ -72,16 +72,50 @@ function createPostItem(postItem) {
 
 	if (removeButton) {
 		removeButton.addEventListener('click', () => {
-			const customeEvent = new CustomEvent('post-remove', {
-				bubbles: true,
-				detail: postItem,
-			});
-
-			removeButton.dispatchEvent(customeEvent);
+			showDeleteModal(postItem);
 		});
 	}
 
 	return postCardElement;
+}
+
+function showDeleteModal(post) {
+	const modal = document.querySelector('.delete-modal');
+	const overlayBackground = document.querySelector('.overlay');
+
+	if (!modal && !overlayBackground) return;
+
+	modal.classList.add('show');
+	overlayBackground.classList.add('show-overlay');
+
+	const buttonConfirmDelete = modal.querySelector('[data-id=confirmDelete]');
+	if (buttonConfirmDelete) {
+		buttonConfirmDelete.addEventListener('click', function () {
+			dispatchDeletePost(this, post, modal);
+		});
+	}
+
+	const listButtonCloseModal = modal.querySelectorAll('[data-id=closeModal]');
+	listButtonCloseModal.forEach((button) => {
+		button.addEventListener('click', () => hideModal(modal, overlayBackground));
+	});
+}
+
+function dispatchDeletePost(element, post, modal) {
+	const customeEvent = new CustomEvent('post-remove', {
+		bubbles: true,
+		detail: {
+			post,
+			modal,
+			overlay: document.querySelector('.overlay'),
+		},
+	});
+
+	element.dispatchEvent(customeEvent);
+}
+function hideModal(modal, overlay) {
+	modal.classList.remove('show');
+	overlay.classList.remove('show-overlay');
 }
 
 export function renderPostList(idSection, postList) {
