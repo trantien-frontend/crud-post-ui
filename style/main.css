@@ -30,7 +30,9 @@ ol {
 a {
 	text-decoration: none;
 }
-
+.d-none {
+	display: none !important;
+}
 .d-flex {
 	display: flex;
 }
@@ -67,11 +69,13 @@ header .nav li a {
 	text-transform: capitalize;
 }
 
-header .nav li:hover::after {
+header .nav li span {
+	display: inline-block;
+	transition: 0.3s all;
 }
 
-header .nav li:hover span i {
-	transform: rotate(90deg);
+header .nav li:first-child:hover span {
+	transform: rotate(180deg);
 }
 
 .overlay {

@@ -55,7 +55,7 @@
 		<!-- Header -->
 		<!-- main -->
 		<section class="hero-background">
-			<img src="" alt="" id="postHeroImage" />
+			<img src="#" id="postHeroImage" />
 		</section>
 
 		<section id="postDetail" class="post-detail">
@@ -70,11 +70,124 @@
 						</span>
 					</div>
 					<div class="post-deital-form">
-						<form id="postForm" action=""></form>
+						<form id="postForm" novalidate>
+							<div class="form-group">
+								<label for="postForm-title">title</label>
+								<input
+									type="text"
+									class="form-control"
+									id="postForm-title"
+									name="title"
+									placeholder="Input Title Post"
+									required
+								/>
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="form-group">
+								<label for="postForm-author">author</label>
+								<input
+									type="text"
+									class="form-control"
+									name="author"
+									id="postForm-author"
+									placeholder="Input Author Post"
+									required
+								/>
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="form-group">
+								<label for="postForm-description">Description</label>
+								<textarea
+									class="form-control"
+									name="description"
+									id="postForm-description"
+									cols="30"
+									rows="5"
+								></textarea>
+							</div>
+
+							<div class="form-radio">
+								<div class="form-check">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="image-source"
+										id="imageSourcePicsum"
+										value="picsum"
+										checked
+									/>
+									<label class="form-check-label" for="imageSourcePicsum">
+										Random Image Source
+									</label>
+								</div>
+								<div class="form-check">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="image-source"
+										id="imageUpload"
+										value="upload"
+									/>
+									<label class="form-check-label" for="imageUpload">
+										Upload Image Source
+									</label>
+								</div>
+							</div>
+
+							<div
+								class="form-group"
+								data-id="imageSource"
+								data-source="picsum"
+							>
+								<label for="postForm-ChangeImage">Change Post Image</label>
+								<small>
+									We're using
+									<a href="https://picsum.photos">Picsum service</a> to get a
+									random image.
+								</small>
+								<button type="button" id="postForm-ChangeImage">
+									Change Post Image
+								</button>
+								<input
+									type="text"
+									name="imageUrl"
+									class="form-control d-none"
+									id="postForm-imageUrl"
+								/>
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div
+								hidden="true"
+								class="form-group"
+								data-id="imageSource"
+								data-source="upload"
+							>
+								<input
+									class="form-control"
+									type="file"
+									accept="image/*"
+									id="postForm-uploadImage"
+									name="image"
+								/>
+								<label for="postForm-uploadImage">Upload</label>
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="post-button">
+								<button data-id="postForm-submit">
+									<i class="fa-solid fa-floppy-disk"></i>
+									Save
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- main -->
+		<script type="module" src="/js/add-edit-post.js"></script>
 	</body>
 </html>

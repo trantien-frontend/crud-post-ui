@@ -24,16 +24,19 @@ export function lightBox({
 	dataIdButtonPrev,
 	dataIdButtonNext,
 }) {
-	const modal = document.getElementById('lightBox');
+	const modal = document.getElementById(idModal);
 	if (!modal) return;
 
-	const imageModal = modal.querySelector('[data-id="lightBoxImage"]');
-	const buttonPrev = modal.querySelector('[data-id=lightBox-Prev]');
-	const buttonNext = modal.querySelector('[data-id=lightBox-Next]');
+	const imageModal = modal.querySelector(dataIdBoxImage);
+	const buttonPrev = modal.querySelector(dataIdButtonPrev);
+	const buttonNext = modal.querySelector(dataIdButtonNext);
 
 	if (!imageModal && !buttonNext && !buttonPrev) return;
 
-	function showImageAtIndex(index, listImage) {
+	let currentIndex = 0;
+	let listImage = [];
+
+	function showImageAtIndex(index) {
 		imageModal.src = listImage[index].src;
 	}
 
@@ -45,21 +48,19 @@ export function lightBox({
 		showLightBoxModal(modal);
 		hideLightBoxModal(modal);
 
-		let listImage = [...document.querySelectorAll('[data-album = lightBox]')];
+		listImage = [...document.querySelectorAll('[data-album = lightBox]')];
+		currentIndex = listImage.findIndex((image) => image === button);
 
-		let currentIndexImage = listImage.findIndex((image) => image === button);
+		showImageAtIndex(currentIndex);
+	});
 
-		showImageAtIndex(currentIndexImage, listImage);
+	buttonNext.addEventListener('click', () => {
+		currentIndex = (currentIndex + 1) % listImage.length;
+		showImageAtIndex(currentIndex);
+	});
 
-		buttonNext.addEventListener('click', () => {
-			currentIndexImage = (currentIndexImage + 1) % listImage.length;
-			showImageAtIndex(currentIndexImage, listImage);
-		});
-
-		buttonPrev.addEventListener('click', () => {
-			currentIndexImage =
-				(listImage.length - (currentIndexImage - 1)) % listImage.length;
-			showImageAtIndex(currentIndexImage, listImage);
-		});
+	buttonPrev.addEventListener('click', () => {
+		currentIndex = (listImage.length - (currentIndex - 1)) % listImage.length;
+		showImageAtIndex(currentIndex);
 	});
 }

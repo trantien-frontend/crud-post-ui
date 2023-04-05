@@ -54,13 +54,14 @@ function renderPostDetail(post) {
 
 		const post = await postApi.getById(idPost);
 
-		renderPostDetail(post);
 		lightBox({
 			idModal: 'lightBox',
 			dataIdBoxImage: '[data-id=lightBoxImage]',
 			dataIdButtonPrev: '[data-id=lightBox-Prev]',
 			dataIdButtonNext: '[data-id=lightBox-Next]',
 		});
+
+		renderPostDetail(post);
 	} catch (error) {
 		console.log('message: ', error);
 	}
