@@ -3,6 +3,7 @@ import { lightBox, setTextContent } from './utils';
 
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { hideLoading } from './utils/loading';
 
 dayjs.extend(relativeTime);
 
@@ -62,6 +63,7 @@ function renderPostDetail(post) {
 		});
 
 		renderPostDetail(post);
+		hideLoading();
 	} catch (error) {
 		console.log('message: ', error);
 	}

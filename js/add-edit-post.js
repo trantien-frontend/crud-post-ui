@@ -2,6 +2,7 @@ import { initPostForm } from './utils/post-form';
 import { postApi } from './api/postApi';
 import { IMAGE_SOURCE } from './constant/constant';
 import toastify from './utils/toastify';
+import { hideLoading } from './utils/loading';
 
 function removeUneseFiels(formData) {
 	const payload = { ...formData };
@@ -70,6 +71,8 @@ async function handelSubmitForm(formValues) {
 				await handelSubmitForm(formData);
 			},
 		});
+
+		hideLoading();
 	} catch (error) {
 		console.log('Error Message: ', error);
 	}
