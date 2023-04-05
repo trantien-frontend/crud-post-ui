@@ -10,12 +10,32 @@ header .nav li:first-child {
 	padding-top: 5rem;
 }
 
+.lastest-post > div > div {
+	text-align: center;
+}
+
 .lastest-post .lastest-post-title {
+	position: relative;
+	display: inline-block;
+
 	font-size: 5rem;
 	text-transform: capitalize;
-	text-align: center;
 
 	margin-bottom: 3rem;
+}
+
+.lastest-post .lastest-post-title::after {
+	content: '';
+	position: absolute;
+
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+
+	width: 60%;
+	height: 1px;
+
+	background-color: var(--color-secondary);
 }
 
 .card {
@@ -102,6 +122,14 @@ header .nav li:first-child {
 
 .card:hover .card__icon {
 	transform: translateY(0) scale(1);
+}
+
+.card .card__icon div {
+	transition: 0.3s all;
+}
+
+.card .card__icon div:hover {
+	background-color: rgb(55, 55, 55);
 }
 
 .input-search-title {

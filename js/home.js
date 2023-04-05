@@ -10,7 +10,7 @@ async function handleFilterChange(filterName, filterValue) {
 
 		if (filterName === 'title_like') searchParams.set('_page', 1);
 
-		searchParams.set(filterName, filterValue);
+		if (filterName) searchParams.set(filterName, filterValue);
 
 		history.pushState({}, '', url);
 
@@ -25,6 +25,20 @@ async function handleFilterChange(filterName, filterValue) {
 		});
 	} catch (error) {
 		console.log('message', error);
+	}
+}
+
+async function initRemovePost() {
+	try {
+		document.addEventListener('post-remove', async (e) => {
+			const post = e.detail;
+			window.confirm('Are you sure deleted');
+
+			await postApi.remove(post.id);
+			await handleFilterChange();
+		});
+	} catch (error) {
+		console.log(error);
 	}
 }
 
@@ -60,4 +74,6 @@ async function handleFilterChange(filterName, filterValue) {
 			handleFilterChange('title_like', value);
 		},
 	});
+
+	initRemovePost();
 })();

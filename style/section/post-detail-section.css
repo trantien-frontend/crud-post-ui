@@ -5,6 +5,7 @@
 .post-detail > div > div {
 	padding: 3rem;
 	background: white;
+	border: 1px solid rgba(186, 186, 186, 0.381);
 	border-radius: 10px;
 }
 

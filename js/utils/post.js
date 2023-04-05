@@ -53,9 +53,33 @@ function createPostItem(postItem) {
 	const postCard = postCardElement.querySelector('.card');
 	postCard.dataset.id = postItem.id;
 
-	postCard.addEventListener('click', () => {
+	const menuButton = postCardElement.querySelector('[data-id=menu]');
+
+	postCard.addEventListener('click', (e) => {
+		const target = e.target;
+		if (menuButton && menuButton.contains(target)) return;
 		window.location.assign(`detail-post.html?id=${postCard.dataset.id}`);
 	});
+
+	const editButton = postCard.querySelector('[data-id=edit]');
+	if (editButton) {
+		editButton.addEventListener('click', () => {
+			window.location.assign(`add-edit-post.html?id=${postCard.dataset.id}`);
+		});
+	}
+
+	const removeButton = postCard.querySelector('[data-id=remove]');
+
+	if (removeButton) {
+		removeButton.addEventListener('click', () => {
+			const customeEvent = new CustomEvent('post-remove', {
+				bubbles: true,
+				detail: postItem,
+			});
+
+			removeButton.dispatchEvent(customeEvent);
+		});
+	}
 
 	return postCardElement;
 }
