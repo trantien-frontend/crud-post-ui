@@ -45,7 +45,7 @@ function getPostSchema() {
 						'Check file size max 0.5mb',
 						'Please select file <= 0.5mb',
 						(file) => {
-							const MAX_SIZE = 0.5 * 1024 * 1024;
+							const MAX_SIZE = 5 * 1024 * 1024;
 							return file.size <= MAX_SIZE;
 						}
 					),
