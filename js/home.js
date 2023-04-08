@@ -4,6 +4,7 @@ import { initPagination, renderPagination } from './utils/pagination';
 import { renderPostList, initSearchPost } from './utils';
 import toastify from './utils/toastify';
 import splideSlide from './utils/splideSlide';
+import { hideLoading } from './utils/loading';
 
 async function handleFilterChange(filterName, filterValue) {
 	try {
@@ -90,4 +91,5 @@ function initSlider() {
 	});
 
 	initRemovePost();
+	hideLoading();
 })();
