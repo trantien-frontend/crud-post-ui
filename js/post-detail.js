@@ -1,9 +1,8 @@
 import { postApi } from './api/postApi';
-import { lightBox, setTextContent } from './utils';
+import { lightBox, setTextContent, hideLoading } from './utils';
 
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { hideLoading } from './utils/loading';
 
 dayjs.extend(relativeTime);
 

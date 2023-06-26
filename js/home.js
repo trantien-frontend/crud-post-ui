@@ -1,10 +1,14 @@
 import { postApi } from './api/postApi';
-import { initPagination, renderPagination } from './utils/pagination';
 
-import { renderPostList, initSearchPost } from './utils';
-import toastify from './utils/toastify';
-import splideSlide from './utils/splideSlide';
-import { hideLoading } from './utils/loading';
+import {
+	initPagination,
+	renderPagination,
+	initSearchPost,
+	renderPostList,
+	hideLoading,
+	toastify,
+	splideSlide,
+} from './utils';
 
 async function handleFilterChange(filterName, filterValue) {
 	try {

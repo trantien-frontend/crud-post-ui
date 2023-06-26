@@ -1,7 +1,7 @@
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
 
-const toastify = {
+export const toastify = {
 	success(message) {
 		Toastify({
 			text: message,
@@ -31,5 +31,3 @@ const toastify = {
 		}).showToast();
 	},
 };
-
-export default toastify;

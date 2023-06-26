@@ -45,7 +45,7 @@ function getPostSchema() {
 						'Check file size max 0.5mb',
 						'Please select file <= 0.5mb',
 						(file) => {
-							const MAX_SIZE = 5 * 1024 * 1024;
+							const MAX_SIZE = 3 * 1024 * 1024;
 							return file.size <= MAX_SIZE;
 						}
 					),
@@ -207,6 +207,7 @@ function showButtonLoading(form) {
 	buttonSubmit.disabled = true;
 	buttonSubmit.textContent = 'Saving...';
 }
+
 function hideButtonLoading(form) {
 	const buttonSubmit = form.querySelector('[data-id=postForm-submit]');
 	if (!buttonSubmit) return;
@@ -254,6 +255,7 @@ export function initPostForm({ idForm, defaultParam, onSubmit }) {
 		formData.id = defaultParam.id;
 
 		const isValidateForm = await validatePostForm(form, formData);
+
 		if (isValidateForm) {
 			await onSubmit(formData);
 			console.log(isValidateForm);

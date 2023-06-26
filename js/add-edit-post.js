@@ -1,8 +1,7 @@
-import { initPostForm } from './utils/post-form';
 import { postApi } from './api/postApi';
 import { IMAGE_SOURCE } from './constant/constant';
-import toastify from './utils/toastify';
-import { hideLoading } from './utils/loading';
+
+import { hideLoading, toastify, initPostForm } from './utils';
 
 function removeUneseFiels(formData) {
 	const payload = { ...formData };
